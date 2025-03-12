@@ -54,6 +54,18 @@ def main():
 
     return best
 
+def eval_func(chromosome):
+    param_min = [0.8, 0, -0.5, -3.14, 0.2, -0.1, -3.14, 0, -1.2, -3.14, 0, 0, -3.14, 0, 0, -3.14, 0, 1.6, -3.14]
+    param_max = [1.8, 0.5, 0.5, 3.14, 0.4, 0.1, 3.14, 0.4, 0, 3.14, 0.2, 0.5, 3.14, 0.1, 0.2, 3.14, 0.2, 1.9, 3.14]
 
+    robot_parameters = [0] * len(chromosome)
+    for i in range(len(chromosome)):
+        robot_parameters[i] = chromosome[i] * (param_max[i] - param_min[i]) + param_min[i]
+
+    print(f"Robot parameters: {robot_parameters}")
+
+    score = nao.crawl(robot_parameters, seconds=5)
+    print(f"Score: {score}")
+    return score
 
 best = main()
