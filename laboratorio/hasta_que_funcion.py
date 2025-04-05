@@ -5,6 +5,7 @@ from pyevolve import Selectors
 from pyevolve import Mutators
 from pyevolve import Crossovers
 from pyevolve import Consts
+
 import math
 
 def fitness(chromosome):
